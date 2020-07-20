@@ -2,3 +2,6 @@
 *.DS_Store
 *.he5
 *.pdf
+.Rproj.user
+*.Rproj
+*.Rhistory
