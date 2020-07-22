@@ -1,0 +1,30 @@
+---
+title: "Plot Lon/Lat Data Map"
+author: "Laura Albrecht"
+date: "7/21/2020"
+output: html_document
+---
+
+```{r}
+#load package and data from package
+library(fields)
+data(CO2)
+```
+
+Note that CO2 is a list of 2 items; the first is lon.lat which contains 2 columns of the longitude and latitude data, the second column is the observations at the lon/lat pair.
+
+```{r}
+# Plot of all the observations 
+quilt.plot(CO2$lon.lat, CO2$y) # the first input to quilt.plot needs to be a matrix of lon/lat pairs
+
+#Add outline of world map
+world(add = TRUE)
+```
+To find out which country a specific latitude/longitude is associated with we use the maps package
+```{r}
+library(maps)
+lat = 40
+lon = 50
+country <- map.where(database="world", x=lat, y=lon)
+```
+
