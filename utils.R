@@ -8,16 +8,28 @@ daily_emissions <- function(no2_mat, countries_cleaned, country){
   return(country_total_no2_adjusted)
 }
 
+world_emissions <- function(no2_mat, countries_cleaned){
+  observed_no2 = sum(no2_mat, na.rm=TRUE)
+  boxes_not_na = sum(!is.na(no2_mat))
+  average = observed_no2 / boxes_not_na
+  total_boxes = 720 * 1440
+  total_no2_adjusted = average * total_boxes
+  return(total_no2_adjusted)
+}
+
+world_emissions_land <- function(no2_mat, countries_cleaned) {
+  observed_no2 = sum((countries_cleaned!="XX")*no2_mat, na.rm=TRUE)
+  boxes_not_na = sum((countries_cleaned!="XX")*!is.na(no2_mat))
+  average = observed_no2 / boxes_not_na
+  total_boxes = sum(countries_cleaned!="X")
+  total_no2_adjusted = average * total_boxes
+  return(total_no2_adjusted)  
+}
+
 date_is <- function(num_days){
   start_date = as.Date('2015-01-01')
   return (start_date + num_days)
 }
-
-country_boxes <- read.csv('countries_cleaned.csv')
-country_boxes <- country_boxes[, colnames(country_boxes) != "X"]
-
-country_no2 <- read.csv('country_averages_adjusted_new.csv')
-country_no2 <- country_no2[, colnames(country_no2) != "X"]
 
 
 
