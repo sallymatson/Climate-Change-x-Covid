@@ -37,6 +37,7 @@ write.csv(countries_cleaned, "countries_cleaned.csv")
 
 
 # Using the chosen countries, get emissions for the day:
+library(ncdf4)
 filenames <- list.files("data/", pattern="*.he5")
 row = 1
 world_averages <- matrix(ncol=16, nrow=2009)
@@ -53,11 +54,11 @@ for (file in filenames){
   world_averages[row,"month"] <- month
   world_averages[row,"day"] <- day
   world_averages[row,"date"] <- paste(year, month, day, sep="")
-  world_averages[row,"World"] <- sum(no2, na.rm=TRUE)/sum(!is.na(no2))
-  for (country in countries){
-    no2_val <- daily_emissions(no2, countries_cleaned, country)
-    world_averages[row,country] <- no2_val
-  }
+  world_averages[row,"World"] <- world_emissions_land(no2, country_boxes)
+  #for (country in countries){
+  #  no2_val <- daily_emissions(no2, countries_cleaned, country)
+  #  world_averages[row,country] <- no2_val
+  #}
   row = row + 1
 }
 
