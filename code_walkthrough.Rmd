@@ -1,0 +1,68 @@
+---
+title: "Code Walkthrough"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(maps)
+library(ncdf4)
+library(zoo)
+library(plot3D)
+library(ggplot2)
+# Set the working directory to source file location:
+```
+
+
+## Data Processing
+In order to get the global & country avergaes significant processing happened of the data. This was time & resource intensive. To run the data youself with more recent data you can execute the following code chunk; otherwise skip this step. The aggregated data that it produces is included in the repository.
+
+```{r processing, eval=FALSE}
+source('initial_proccessing.R')
+# Creates the country grid; commented out because file is static & included:
+# create_country_grid_mapping()
+
+# Aggregate average country & world NO2:
+countries <- c("Brazil", "Canada", "China", "Germany", "India", "Iran", "Italy", "Japan", "Russia", "Saudi Arabia", "USA")
+calculate_daily_average_no2(countries)
+```
+
+Instead of running this every time it's easist to just open the csv files by sourcing `open_data.R`. This should populate your environment with all the data & variables used further.
+```{r open_data}
+source('open_data.R')
+```
+
+## Opening Individual Data files
+```{r}
+filename = "Sample_no2_data_07182020.he5"
+ncin <- nc_open(filename)
+no2 <- t(ncvar_get(ncin,"Data Fields/ColumnAmountNO2CloudScreened"))
+```
+
+
+## Overall trend visuals
+Two simple but important visuals are plotting one day's worth of data, and the overall trend.
+```{r}
+source('basic_plots.R')
+one_day_plot(no2)
+yearly_comparison("World")
+```
+
+
+
+
+## Changes over time
+We test the significance of the decrease in NO2 from all pairs of consecutive years between 2015 and 2020. 
+```{r}
+source('change_over_time.R')
+t.test.main()
+```
+
+# Lockdown correlation
+We also assessed the correlation between % change in no2 from 2020 to the mean of 2015-2019 to governmental lockdown data.
+```{r}
+source('correlation_no2_lockdown.R')
+corr.table <- corr.main()
+round(corr.table, 2)
+```
+

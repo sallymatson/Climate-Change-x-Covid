@@ -1,3 +1,7 @@
+library(maps)
+library(ncdf4)
+
+
 what_is_map.where <- function(){
   # Demonstating the tool using Burlington, VT:
   lat = 44.4
