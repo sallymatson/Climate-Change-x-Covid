@@ -1,5 +1,5 @@
 # Climate Change and Covid-19
-Through the American Institute of Math's Climate Research Network (AIM CRN) we participated in a summer school on modeling & the covid-19 epidemic. We researched the impact of the epidemic on NO2 emissions (often used as a proxy for CO2 due to their short lifetime in the atmosphere and daily availability.)
+Through the American Institute of Math's Climate Research Network (AIM CRN) we participated in a summer school on modeling & the covid-19 epidemic. We researched the impact of the epidemic on NO2 emissions (often used as a proxy for CO2 due to their short lifetime in the atmosphere and daily availability.) Our 3-page report is included in this repo (`Final_Report.pdf`.)
 
 ## Running the code
 To quickly get up to speed with the code, clone the repository and then knit the `code_walkthrough.Rmd` file. This should explain how to run all of the data processing & analysis in a straightforward manner. 
