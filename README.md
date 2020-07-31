@@ -18,4 +18,4 @@ If you want to do different analysis (ex. include more countries) or include mor
     - If it's not working, make sure that you are logged in to GES-DISC/Earthdata and the account is properly linked. 
     
 ### Setting up on a server
-For the AIM summer school we used a GCP server in order to run the data aggregation. For easy setup, see [this tutorial](https://grantmcdermott.com/2017/05/30/rstudio-server-compute-engine/). Note that to download the data you'll need to increase the server's persistent storage. [This](https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd) walks you through how to do that. 
+For the AIM summer school we used a GCP server in order to run the data aggregation. For easy setup, see [this tutorial](https://grantmcdermott.com/2017/05/30/rstudio-server-compute-engine/). Be super cognizant of the **persistent disk** size, which needs to be big enough to store all of the datafiles!! If you need to increase it retroactively follow [this](https://cloud.google.com/compute/docs/disks/add-persistent-disk#resize_pd) tutorial. 
