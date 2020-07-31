@@ -70,7 +70,7 @@ calculate_daily_average_no2 <- function(countries){
   world_averages <- matrix(ncol=16, nrow=2009)
   colnames(world_averages) <- c("year", "month", "day", "date", countries, "World")
   for (filename in filenames){
-    ncin <- nc_open(paste("data/", filename, sep=""))
+    ncin <- nc_open(paste("no2_data/", filename, sep=""))
     year <- substr(filename, 20, 23)
     month <- substr(filename, 25, 26)
     day <- substr(filename, 27, 28)

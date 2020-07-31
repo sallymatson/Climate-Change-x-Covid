@@ -18,7 +18,7 @@ country_no2_2019 <- country_no2[1445:1643,]
 country_no2_2020 <- country_no2[1810:2009,]
 
 # Get averages for each day across 2015-2019
-country_averages <- aggregate(country_no2[1:1810,], list(country_no2[1:1810,"day"], country_no2[1:1810,"month"]), mean, na.rm=TRUE)
+country_averages <- aggregate(country_no2[1:1810,names(country_no2) != "Date"], list(country_no2[1:1810,"day"], country_no2[1:1810,"month"]), mean, na.rm=TRUE)
 country_averages["Date"] <- paste(country_averages[,"month"], country_averages[,"day"], sep=" ")
 # Isolate only Jan 1 - July 18
 country_averages <- country_averages[1:200,]
