@@ -29,7 +29,7 @@ calculate_daily_average_no2(countries)
 
 Instead of running this every time it's easist to just open the csv files by sourcing `open_data.R`. This should populate your environment with all the data & variables used further.
 ```{r open_data}
-source('open_data.R')
+source('open_saved_data.R')
 ```
 
 ## Opening Individual Data files
